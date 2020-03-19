@@ -4,24 +4,24 @@ import { Box, Text, Heading, Button, Anchor } from 'grommet';
 const choiceView = ({ item, toggleUi }) => {
   return (
     <Box 
-      pad={{ left: 'large', right: 'large' }}
-      background="accent-4" 
-      align="center"
-      height="100%" 
       width="100%"
+      height="100%" 
+      align="center"
+      background="accent-4" 
+      pad={{ left: 'large', right: 'large' }}
     >
       <Box 
-        justify="around"
-        align="center"
         height="85%"
         width="100%"
+        align="center"
+        justify="around"
       >
         <Box height="20%" justify="end">
           <Heading 
-            textAlign="center" 
-            color="dark-1"
-            size="medium" 
             level="3" 
+            size="medium" 
+            color="dark-1"
+            textAlign="center" 
           >
             Your last option is
           </Heading>
@@ -29,18 +29,18 @@ const choiceView = ({ item, toggleUi }) => {
         <Box height="80%" width="100%" pad={{ bottom: 'medium' }}>
           <Box height="50%" justify="end" align="center" >
             <Heading 
-              textAlign="center" 
-              color="dark-1" 
-              size="medium" 
               level="2"
+              size="medium" 
+              color="dark-1" 
+              textAlign="center" 
             >
               {item.name}
             </Heading>
           </Box>
           <Box 
-            margin={{ bottom: 'large' }}
-            justify="center" 
             align="start" 
+            justify="center" 
+            margin={{ bottom: 'large' }}
           >
             <Text weight="bold" color="dark-1" alignSelf="center">
               {item.categories[0].title}
@@ -50,31 +50,31 @@ const choiceView = ({ item, toggleUi }) => {
             </Text>
           </Box>
           <Box 
-            background={{ 'color': 'dark-1', 'opacity': 'weak'}}
-            alignSelf="center"
-            justify="center" 
-            round="large" 
-            width="66px" 
             pad="small"
+            width="66px" 
+            round="large" 
+            justify="center" 
+            alignSelf="center"
+            background={{ 'color': 'dark-1', 'opacity': 'weak'}}
           >
             <Anchor 
-              alignSelf="center" 
-              href={item.url}
-              target="_blank"
-              color="dark-1" 
-              size="small" 
-              label="Info" 
               primary 
+              label="Info" 
+              size="small" 
+              color="dark-1" 
+              target="_blank"
+              href={item.url}
+              alignSelf="center" 
             />
           </Box>
         </Box>
       </Box>
       <Box height="15%" justify="center" margin={{ 'bottom': 'medium' }}>
           <Button 
-            onClick={() => toggleUi('landing')} 
-            label="Try again" 
-            color="dark-1" 
             primary
+            color="dark-1" 
+            label="Try again" 
+            onClick={toggleUi} 
           />
       </Box>
     </Box>

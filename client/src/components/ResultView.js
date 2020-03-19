@@ -1,42 +1,41 @@
 import React from 'react';
 import { Box } from 'grommet';
-
-import ResultHeader from './ResultHeader';
 import ResultList from './ResultList';
+import ResultHeader from './ResultHeader';
 
 const resultView = ({ 
-  toggleCustomForm,
-  customSearchData, 
-  randomSorting, 
-  location, 
-  isCustom, 
+  data, 
   toggleUi, 
-  data 
+  isCustom, 
+  location, 
+  randomSorting, 
+  customSearchData, 
+  toggleCustomForm,
 }) => {
 
   return (
     <Box height="100vh">
       <ResultHeader 
-        toggleCustomForm={toggleCustomForm}
-        customSearchData={customSearchData}
-        location={location} 
-        isCustom={isCustom} 
         toggleUi={toggleUi} 
+        isCustom={isCustom} 
+        location={location} 
+        customSearchData={customSearchData}
+        toggleCustomForm={toggleCustomForm}
       />
       <ResultList 
-        customSearchTerms={customSearchData}
-        randomSorting={randomSorting}
-        isCustom={isCustom} 
-        toggleUi={toggleUi} 
         data={data} 
+        toggleUi={toggleUi} 
+        isCustom={isCustom} 
+        randomSorting={randomSorting}
+        customSearchTerms={customSearchData}
       />
       <Box height="8%" justify="center">
           <div style={{
-              alignItems: 'center',
-              textAlign: 'center',
-              fontWeight: 'bold',
-              fontSize: 15,
               opacity: 0.2,
+              fontSize: 15,
+              fontWeight: 'bold',
+              textAlign: 'center',
+              alignItems: 'center',
             }}
           >
             <a 

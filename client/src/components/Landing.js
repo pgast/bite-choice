@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Box, Heading, TextInput, ThemeContext, Text } from 'grommet';
-import { Map } from 'grommet-icons';
 
+import { Map } from 'grommet-icons';
 import { Store } from '../Store';
 
 const landing = ({ location, fetchSuccess, locationInput }) => {
@@ -10,18 +10,18 @@ const landing = ({ location, fetchSuccess, locationInput }) => {
 
   return (
     <Box 
-      height={locationInput ? "85%" : "100%"}
-      animation="fadeIn"
-      justify="center" 
-      align="center" 
       width="100vw"
+      align="center" 
+      justify="center" 
+      animation="fadeIn"
+      height={locationInput ? "85%" : "100%"}
     >
     {locationInput && (
       <Box 
-        justify="center"
-        height="100%"
-        width="100%"
         pad="large"
+        width="100%"
+        height="100%"
+        justify="center"
       >       
         <ThemeContext.Extend value={{
           global: { focus: { border: { color: 'status-warning' } } },
@@ -32,21 +32,21 @@ const landing = ({ location, fetchSuccess, locationInput }) => {
           } }
         }}>
           <TextInput
-            value={state.inputLocation.charAt(0).toUpperCase() + state.inputLocation.substring(1)}
-            onChange={(e) => updateLocation(e.target.value)}
-            placeholder="Type your new location" 
-            focusIndicator
-            size="large"
-            plain
+              plain
+              size="large"
+              focusIndicator
+              placeholder="Type your new location" 
+              onChange={(e) => updateLocation(e.target.value)}
+              value={state.inputLocation.charAt(0).toUpperCase() + state.inputLocation.substring(1)}
           />
         </ThemeContext.Extend>
         <Heading 
-          textAlign="center"
-          alignSelf="center"
-          color="dark-1" 
-          margin="none"
           level="3"
           size="small"
+          margin="none"
+          color="dark-1" 
+          alignSelf="center"
+          textAlign="center"
         >
           and choose your search option
         </Heading>
@@ -54,25 +54,25 @@ const landing = ({ location, fetchSuccess, locationInput }) => {
     )}
     {((fetchSuccess || fetchSuccess === '') && !locationInput) && (
       <Box 
-        justify="center"
-        height="100%"
-        width="100%"
         pad="medium"
+        width="100%"
+        height="100%"
+        justify="center"
         >
           <Heading 
-            alignSelf="center"
-            color="dark-1" 
-            margin="none"
             size="small"
+            margin="none"
+            color="dark-1" 
+            alignSelf="center"
           >
             Where to eat in
           </Heading>
           <Heading 
-            color="status-warning" 
-            textAlign="center"
-            truncate={false} 
-            margin="none"
             size="large"
+            margin="none"
+            truncate={false} 
+            textAlign="center"
+            color="status-warning" 
           >
             {location}
           </Heading>
@@ -80,18 +80,18 @@ const landing = ({ location, fetchSuccess, locationInput }) => {
     )}
     {(!(fetchSuccess || fetchSuccess === '') && !locationInput) && (
       <Box 
-        justify="center"
-        align="center"
-        height="100%"
-        width="100%"
         pad="medium"
+        width="100%"
+        height="100%"
+        align="center"
+        justify="center"
         >
           <Map size="large" color="status-warning"/>
           <Heading 
-            margin={{ 'top': 'large' }}
-            alignSelf="center"
-            color="dark-1" 
             size="small"
+            color="dark-1" 
+            alignSelf="center"
+            margin={{ 'top': 'large' }}
           >
             Unable to fetch location
           </Heading>

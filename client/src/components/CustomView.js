@@ -1,35 +1,34 @@
 import React from 'react';
-
 import ResultView from './ResultView';
 import CustomForm from './CustomForm';
 
 const customView = ({ 
-  toggleCustomForm,
-  customView, 
+  data,
   location, 
   toggleUi, 
-  data
+  customView, 
+  toggleCustomForm,
 }) => {
   return (
-    <div>
+    <>
       {customView.resultsMode ? 
         <ResultView 
-          randomSorting={customView.sortBy === 'random' ? true : false}
-          toggleCustomForm={toggleCustomForm}
-          customSearchData={customView}
+          isCustom
+          data={data}
           toggleUi={toggleUi}
           location={location}
-          isCustom={true}
-          data={data}
+          customSearchData={customView}
+          toggleCustomForm={toggleCustomForm}
+          randomSorting={customView.sortBy === 'random' ? true : false}
         /> 
         : 
         <CustomForm 
-          customView={customView} 
           location={location}
           toggleUi={toggleUi} 
+          customView={customView} 
         />}
-    </div>
+    </>
   );
 };
 
-export default customView;
+export default React.memo(customView);

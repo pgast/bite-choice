@@ -1,24 +1,24 @@
 import React, { useState, useContext } from 'react';
 import { Previous, FormClose } from 'grommet-icons';
 import { 
-  ThemeContext, 
-  FormField, 
-  TextInput, 
-  Heading, 
+  Box, 
+  Text, 
   Button, 
   Select, 
   Anchor, 
-  Text, 
-  Box 
+  Heading, 
+  TextInput, 
+  FormField, 
+  ThemeContext, 
 } from 'grommet';
 
 import { Store } from '../Store';
 
 const customForm = ({ toggleUi, customView, location }) => {
-  const [searchTerms, setSearchTerms] = useState(customView.searchTerms);
-  const [sortBy, setSortBy] = useState(customView.sortBy);
-  const [currentTerm, setCurrentTerm] = useState("");
   const { dispatch } = useContext(Store);
+  const [currentTerm, setCurrentTerm] = useState("");
+  const [sortBy, setSortBy] = useState(customView.sortBy);
+  const [searchTerms, setSearchTerms] = useState(customView.searchTerms);
 
   const submitSearchTerms = (e) => {
     e.preventDefault();
@@ -45,11 +45,11 @@ const customForm = ({ toggleUi, customView, location }) => {
         <Box direction="row" height="15%" align="center">
           <Box width="20%">
             <Anchor 
-              onClick={() => toggleUi('landing')}
-              margin={{ top: '4px' }} 
-              icon={<Previous />} 
-              color="dark-1"
               size="small"
+              color="dark-1"
+              icon={<Previous />} 
+              margin={{ top: '4px' }} 
+              onClick={() => toggleUi('landing')}
             />
           </Box>
           <Box width="60%" align="center" justify="center">
@@ -59,10 +59,10 @@ const customForm = ({ toggleUi, customView, location }) => {
           </Box>
         </Box>
         <Box 
-          alignSelf="center"
-          align="center"
-          width="260px"
           height="69%" 
+          width="260px"
+          align="center"
+          alignSelf="center"
         >
           <Box justify="center" width="100%">
             <ThemeContext.Extend value={{
@@ -77,12 +77,12 @@ const customForm = ({ toggleUi, customView, location }) => {
             }}>
               <FormField label="Sort by">
                 <Select
-                  options={['Best Match', 'Rating', 'Random']}
-                  onChange={({ option }) => setSortBy(option)}
-                  alignSelf="center"
-                  value={sortBy}
-                  size="medium"
                   plain
+                  size="medium"
+                  value={sortBy}
+                  alignSelf="center"
+                  onChange={({ option }) => setSortBy(option)}
+                  options={['Best Match', 'Rating', 'Random']}
                 />
               </FormField>
             </ThemeContext.Extend>
@@ -93,38 +93,38 @@ const customForm = ({ toggleUi, customView, location }) => {
             }}>
               <FormField label="Search for:">
                 <TextInput 
-                  onChange={(e) => setCurrentTerm(e.target.value)}
-                  placeholder="e.g. Pizza, Tacos, Bar" 
-                  value={currentTerm}
                   size="small"
+                  value={currentTerm}
+                  placeholder="e.g. Pizza, Tacos, Bar" 
+                  onChange={(e) => setCurrentTerm(e.target.value)}
                 />
               </FormField>
             </ThemeContext.Extend>
             <Button 
-              label={ searchTerms.length === 3 ? "Click on terms to delete" : "Add"} 
-              disabled={searchTerms.length === 3 ? true : false}
-              primary={searchTerms.length === 3 ? true : false}
-              onClick={(e) => addTerm(e)} 
-              color="status-warning"
               alignSelf="center"
+              color="status-warning"
+              onClick={(e) => addTerm(e)} 
+              primary={searchTerms.length === 3 ? true : false}
+              disabled={searchTerms.length === 3 ? true : false}
+              label={ searchTerms.length === 3 ? "Click on terms to delete" : "Add"} 
             />
           </Box> 
           <Box 
-            pad={{ top: 'small', bottom: 'small' }}
-            justify="evenly"
-            align="center" 
-            height="50%"
             width="100%"
+            height="50%"
+            align="center" 
+            justify="evenly"
+            pad={{ top: 'small', bottom: 'small' }}
           >
             {searchTerms.map((el, index) => {
               return (
                 <Box 
-                  pad={{ top: 'xsmall', bottom: 'xsmall', left: 'small', right: 'small' }}
-                  onClick={() => removeTerm(index)} 
-                  background="light-2" 
-                  direction="row"
-                  round="xlarge"
                   key={index} 
+                  round="xlarge"
+                  direction="row"
+                  background="light-2" 
+                  onClick={() => removeTerm(index)} 
+                  pad={{ top: 'xsmall', bottom: 'xsmall', left: 'small', right: 'small' }}
                 >
                   <Text textAlign="center" weight="bold" margin={{ 'right': 'small' }}>
                     {el}
@@ -136,11 +136,11 @@ const customForm = ({ toggleUi, customView, location }) => {
           </Box>  
         </Box>
       <Box
-        onClick={(e) => submitSearchTerms(e)}
-        background="status-warning"
-        justify="center"
-        align="center" 
         height="16%" 
+        align="center" 
+        justify="center"
+        background="status-warning"
+        onClick={(e) => submitSearchTerms(e)}
       >
         <Heading level="3" size="small">
           FIND ME PLACES
@@ -150,4 +150,4 @@ const customForm = ({ toggleUi, customView, location }) => {
   );
 };
 
-export default customForm;
+export default React.memo(customForm);

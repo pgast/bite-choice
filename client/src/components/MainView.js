@@ -1,11 +1,10 @@
 import React, { useContext, useState } from 'react';
 import { Heading, Box, Anchor } from 'grommet';
 import { Previous } from 'grommet-icons';
-
-import CustomView from './CustomView';
-import RandomView from './RandomView';
 import { Store } from '../Store';
 import Landing from './Landing';
+import CustomView from './CustomView';
+import RandomView from './RandomView';
 
 const mainView = ({ location, fetchSuccess }) => {
   const [locationInput, setLocationInput] = useState(false);
@@ -29,105 +28,105 @@ const mainView = ({ location, fetchSuccess }) => {
   }
 
   return (
-    <React.Fragment>
+    <>
       {state.ui === 'landing' && (
-        <React.Fragment>
+        <>
           <Box height="60vh">
             {locationInput && (
               <Box height="15%" background="light-1" justify="center">
                 <Anchor 
-                  onClick={() => toggleLocationInputView(false)}
-                  margin={{ top: '4px' }}
-                  icon={<Previous />}
-                  color="dark-1"
                   size="small" 
+                  color="dark-1"
+                  icon={<Previous />}
+                  margin={{ top: '4px' }}
+                  onClick={() => toggleLocationInputView(false)}
                 />
               </Box>
             )}
             <Landing 
-              locationInput={locationInput}
-              fetchSuccess={fetchSuccess} 
               location={location} 
+              fetchSuccess={fetchSuccess} 
+              locationInput={locationInput}
             /> 
           </Box>
           <Box height="40vh" animation="slideUp">
             <Box
-              onClick={validBtn() ? () => toggleUi('random') : null}
+              align="center"
+              justify="center"
               height={locationInput ? "65%" : "50%"}
               background={{ 
                 'opacity': validBtn() ? 'strong' : 'medium', 
                 'color': 'status-warning'
               }}
-              justify="center"
-              align="center"
+              onClick={validBtn() ? () => toggleUi('random') : null}
             >
               <Heading 
-                color={validBtn()  ? "" : "dark-6"}
-                textAlign="center" 
-                size="small" 
                 level="3"
+                size="small" 
+                textAlign="center" 
+                color={validBtn()  ? "" : "dark-6"}
                 >
                 FIND ME PLACES
               </Heading>
             </Box>
             <Box
-              onClick={validBtn() ? () => toggleUi('custom') : null}
+              height="35%"
+              align="center"
+              justify="center"
               background={{
                 'opacity': validBtn() ? 'strong' : 'medium',
                 'color': 'accent-4'
               }}
-              justify="center"
-              align="center"
-              height="35%"
+              onClick={validBtn() ? () => toggleUi('custom') : null}
             >
               <Heading 
-                color={validBtn() ? "" : "dark-6"}
-                textAlign="center" 
-                size="small" 
                 level="3"
+                size="small" 
+                textAlign="center" 
+                color={validBtn() ? "" : "dark-6"}
               >
                 CUSTOM SEARCH
               </Heading>
             </Box>
             {!locationInput && (
               <Box 
-                onClick={() => toggleLocationInputView(true)}
-                background="dark-1" 
-                justify="center" 
                 height="20%" 
+                justify="center" 
+                background="dark-1" 
+                onClick={() => toggleLocationInputView(true)}
               >
                 <Heading 
-                  alignSelf="center"
-                  textAlign="center"
+                  level="5" 
                   size="xsmall" 
                   margin="none" 
-                  level="5" 
+                  textAlign="center"
+                  alignSelf="center"
                 >
                   WRONG LOCATION? FIX IT HERE
                 </Heading>
               </Box>
             )}
           </Box>
-        </React.Fragment>
+        </>
       )}
       {state.ui === 'custom' && (
         <CustomView 
-          location={locationInput ? state.inputLocation : location}
-          toggleCustomForm={toggleCustomForm}
-          customView={state.customView}
-          toggleUi={toggleUi}
           data={state.data}
+          toggleUi={toggleUi}
+          customView={state.customView}
+          toggleCustomForm={toggleCustomForm}
+          location={locationInput ? state.inputLocation : location}
         />
       )} 
       {state.ui === 'random' && (
         <RandomView 
-          location={locationInput ? state.inputLocation : location}
-          locationInput={locationInput}
-          toggleUi={toggleUi} 
           data={state.data}
+          locationInput={locationInput}
+          toggleUi={() => toggleUi('landing')} 
+          location={locationInput ? state.inputLocation : location}
         />
       )}
-    </React.Fragment>
+    </>
   );
 };
 

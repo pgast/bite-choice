@@ -4,27 +4,27 @@ import { Box, Text, Anchor } from 'grommet';
 const ListItem = ({ item, removeItem }) => {
   return (
     <Box 
-      background="accent-4"
-      justify="around"
-      align="center"
+      pad="small"
+      height="27%" 
       round="small" 
       width="260px"
-      height="27%" 
-      pad="small"
+      align="center"
+      justify="around"
+      background="accent-4"
     >
       <Box>
         <Text 
-          margin={{bottom: 'xsmall'}} 
-          textAlign="center" 
           weight="bold"
+          textAlign="center" 
+          margin={{bottom: 'xsmall'}} 
         >
           {item.name}
         </Text>
         <Box 
-          justify="center" 
-          direction="row" 
-          width="100%"
           gap="medium" 
+          width="100%"
+          direction="row" 
+          justify="center" 
         >
           <Text size="small">
             { item.categories[0].hasOwnProperty('title') ? item.categories[0].title : "" }
@@ -32,39 +32,39 @@ const ListItem = ({ item, removeItem }) => {
         </Box>
       </Box>
       <Box 
-        justify="center" 
-        direction="row" 
-        width="100%"
         gap="large" 
+        width="100%"
+        direction="row" 
+        justify="center" 
       >
         <Box 
-          background={{ 'color': 'dark-1', 'opacity': 'weak'}}
-          round="large" 
-          width="66px" 
           pad="small" 
+          width="66px" 
+          round="large" 
+          background={{ 'color': 'dark-1', 'opacity': 'weak'}}
         >
           <Anchor 
-            alignSelf="center" 
-            href={item.url}
-            target="_blank"
-            color="dark-1" 
-            size="small" 
-            label="Info" 
             primary 
+            label="Info" 
+            size="small" 
+            color="dark-1" 
+            target="_blank"
+            href={item.url}
+            alignSelf="center" 
           />
         </Box>
         <Box 
-          background={{ 'color': 'status-warning', 'opacity': 'strong' }}
-          round="large" 
-          width="66px" 
           pad="small" 
+          width="66px" 
+          round="large" 
+          background={{ 'color': 'status-warning', 'opacity': 'strong' }}
         >
           <Anchor 
-            onClick={() => removeItem()} 
-            alignSelf="center" 
+            size="small" 
             label="Delete" 
             color="dark-1" 
-            size="small" 
+            alignSelf="center" 
+            onClick={() => removeItem()} 
           />
         </Box>
       </Box>
@@ -72,4 +72,4 @@ const ListItem = ({ item, removeItem }) => {
   );
 };
 
-export default ListItem;
+export default React.memo(ListItem);

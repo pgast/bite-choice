@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Cafeteria } from 'grommet-icons';
 import { Box, Heading } from 'grommet';
-
 import ErrorScreen from './ErrorScreen';
 import ChoiceView from './ChoiceView';
 import ListItem from './ListItem';
@@ -136,19 +135,19 @@ const resultList = ({ data, randomSorting, isCustom, toggleUi, customSearchTerms
   return (
     <Box height={isCustom ? "75%" : "85%"} align="center" justify="evenly">
       {displayItems.length > 1 && (
-        <React.Fragment>
+        <>
           {displayItems.map((el, index) => {
             return <ListItem key={index} item={el} removeItem={() => removeItem(index)}/>
           })}
-        </React.Fragment>
+        </>
       )}
       {(displayItems.length < 1) && (
         <Box 
-          background="status-warning" 
-          justify="center" 
-          align="center"
-          height="100%" 
           width="100%" 
+          height="100%" 
+          align="center"
+          justify="center" 
+          background="status-warning" 
         >
           <Cafeteria size="xlarge" color="light-1" />
           <Heading color="light-1">

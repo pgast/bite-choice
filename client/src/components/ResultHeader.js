@@ -3,31 +3,31 @@ import { Box, Anchor, Text } from 'grommet';
 import { Previous } from 'grommet-icons';
 
 const resultHeader = ({ 
-  customSearchData, 
-  toggleCustomForm, 
+  toggleUi, 
   location, 
   isCustom, 
-  toggleUi 
+  toggleCustomForm, 
+  customSearchData, 
 }) => {
   return (
-    <React.Fragment>
+    <>
       {!isCustom && (
         <Box 
-          pad={{ left: 'small', right: 'small' }}
-          alignContent="center"
-          background="light-1"
-          justify="around"
-          direction="row" 
-          align="center"
           height="15%" 
+          align="center"
+          direction="row" 
+          justify="around"
+          background="light-1"
+          alignContent="center"
+          pad={{ left: 'small', right: 'small' }}
         >
           <Box width="20%">       
             <Anchor 
-              onClick={() => toggleUi('landing')}
-              margin={{ top: '4px' }}
-              icon={<Previous />}
-              color="dark-1"
               size="small" 
+              color="dark-1"
+              onClick={toggleUi}
+              icon={<Previous />}
+              margin={{ top: '4px' }}
             />
           </Box>
           <Box width="60%" align="center">
@@ -35,11 +35,11 @@ const resultHeader = ({
               Eating in
             </Text>
             <Text 
-              color="status-warning" 
-              alignSelf="center"
-              textAlign="center" 
-              weight="bold" 
               size="large" 
+              weight="bold" 
+              textAlign="center" 
+              alignSelf="center"
+              color="status-warning" 
             >
               {location}
             </Text>
@@ -49,26 +49,26 @@ const resultHeader = ({
       )}
       {isCustom && (
         <Box 
-          pad={{ left: 'small', right: 'small' }}
-          alignContent="center"
-          background="light-1"
-          justify="around"
-          align="center"
           height="25%" 
+          align="center"
+          justify="around"
+          background="light-1"
+          alignContent="center"
+          pad={{ left: 'small', right: 'small' }}
         >
           <Box 
-            direction="row" 
-            align="center"
-            height="50%" 
             width="100%" 
+            height="50%" 
+            align="center"
+            direction="row" 
           >
             <Box width="20%">       
               <Anchor 
-                onClick={() => toggleCustomForm()}
-                margin={{ top: '4px' }}
-                icon={<Previous />}
-                color="dark-1"
                 size="small" 
+                color="dark-1"
+                icon={<Previous />}
+                margin={{ top: '4px' }}
+                onClick={() => toggleCustomForm()}
               />
             </Box>
             <Box width="60%" align="center">
@@ -83,20 +83,20 @@ const resultHeader = ({
           </Box>
           <Box height="60%" width="100%">
             <Box 
-              justify="center" 
-              direction="row" 
-              height="50%" 
-              align="end" 
               gap="small"
+              align="end" 
+              height="50%" 
+              direction="row" 
+              justify="center" 
             >
               {customSearchData.searchTerms.map((el, index) => {
                 return (
                   <Box 
                     pad={{ 
-                      bottom: 'xsmall', 
-                      right: 'small', 
-                      top: 'xsmall', 
                       left: 'small', 
+                      top: 'xsmall', 
+                      right: 'small', 
+                      bottom: 'xsmall', 
                     }}
                     background="light-3" 
                     round="xlarge"
@@ -110,20 +110,20 @@ const resultHeader = ({
               })} 
             </Box>
             <Box 
-              justify="center" 
-              direction="row"
-              height="40%" 
-              width="100%" 
               align="end" 
+              width="100%" 
+              height="40%" 
+              direction="row"
+              justify="center" 
             >
               <Text size="small" weight="bold">
                 Sorted by
               </Text>
               <Text 
-                margin={{ left: 'xsmall' }}
-                color="status-warning" 
-                weight="bold" 
                 size="small" 
+                weight="bold" 
+                color="status-warning" 
+                margin={{ left: 'xsmall' }}
               >
                 {customSearchData.sortBy}
               </Text>
@@ -131,7 +131,7 @@ const resultHeader = ({
           </Box>
         </Box>
       )}
-    </React.Fragment>
+    </>
   );
 };
 

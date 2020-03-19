@@ -5,12 +5,12 @@ import { Box, Heading, Text } from 'grommet';
 const errorScreen = ({ error }) => {
   return (
     <Box 
-      background="status-error" 
-      justify="center" 
-      align="center"
-      height="100%" 
-      width="100%"
       pad="large" 
+      width="100%"
+      height="100%" 
+      align="center"
+      justify="center" 
+      background="status-error" 
     >
       <Alert size="xlarge" />
       <Heading color="light-1">
