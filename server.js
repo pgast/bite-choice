@@ -1,3 +1,4 @@
+const compression = require('compression');
 const express = require('express');
 const app = express();
 const port = process.env.PORT || 5000;
@@ -6,11 +7,10 @@ const bodyParser = require('body-parser');
 
 var path = require("path");
 
+app.use(compression());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'build')));
-
-
 
 const generateUrl = (inputParams) => {
     let url = `https://api.yelp.com/v3/businesses/search?`;

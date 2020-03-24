@@ -15,15 +15,29 @@ import { Layer } from 'grommet';
 
 **animate**
 
-Animation transition of the Layer content when it opens. Defaults to `true`.
+Whether to animate the Layer content when it opens. This
+        property is deprecated and will be removed in the next major version
+        of grommet. Instead, use 'animation'. Defaults to `true`.
 
 ```
 boolean
 ```
 
+**animation**
+
+Animation transition of the Layer content when it opens and closes. Defaults to `slide`.
+
+```
+slide
+fadeIn
+none
+boolean
+```
+
 **full**
 
-Whether the width and/or height should fill the current viewport size.
+Whether the width and/or height should fill the current viewport 
+        size.
 
 ```
 boolean
@@ -35,7 +49,7 @@ horizontal
 
 The amount of margin around the Layer. An object can be specified to
 distinguish horizontal margin, vertical margin, and margin on a
-particular side of the layer Defaults to `none`.
+particular side of the layer
 
 ```
 none
@@ -46,6 +60,13 @@ medium
 large
 {
   bottom: 
+    xxsmall
+    xsmall
+    small
+    medium
+    large
+    string,
+  end: 
     xxsmall
     xsmall
     small
@@ -73,6 +94,13 @@ large
     medium
     large
     string,
+  start: 
+    xxsmall
+    xsmall
+    small
+    medium
+    large
+    string,
   top: 
     xxsmall
     xsmall
@@ -93,7 +121,8 @@ string
 
 **modal**
 
-Whether there should be an overlay preventing interaction underneath the layer. Defaults to `true`.
+Whether there should be an overlay preventing interaction underneath 
+        the layer. Defaults to `true`.
 
 ```
 boolean
@@ -101,7 +130,8 @@ boolean
 
 **onClickOutside**
 
-Function that will be invoked on modal layers when the user clicks outside the layer.
+Function that will be invoked on modal layers when the user clicks 
+      outside the layer.
 
 ```
 function
@@ -109,7 +139,8 @@ function
 
 **onEsc**
 
-Function that will be called when the user presses the escape key inside the layer.
+Function that will be called when the user presses the escape key inside
+       the layer.
 
 ```
 function
@@ -132,9 +163,11 @@ bottom
 bottom-left
 bottom-right
 center
+end
 hidden
 left
 right
+start
 top
 top-left
 top-right
@@ -146,6 +179,15 @@ Whether the layer should take full width and height on mobile Defaults to `true`
 
 ```
 boolean
+```
+
+**target**
+
+Target where the layer will be aligned to. This should be a React 
+      reference.
+
+```
+object
 ```
   
 ## Intrinsic element
@@ -207,7 +249,8 @@ rgba(0, 0, 0, 0.5)
 
 **layer.responsiveBreakpoint**
 
-The actual breakpoint to trigger changes in the border, direction, gap, margin, pad, and round. Expects `string`.
+The actual breakpoint to trigger changes in the border, 
+direction, gap, margin, pad, and round. Expects `string`.
 
 Defaults to
 
@@ -227,7 +270,8 @@ Defaults to
 
 **global.breakpoints**
 
-The possible breakpoints that could affect border, direction, gap, margin, pad, and round. Expects `object`.
+The possible breakpoints that could affect border, direction, gap, margin, 
+    pad, and round. Expects `object`.
 
 Defaults to
 

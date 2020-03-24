@@ -27,14 +27,14 @@ class App extends Component {
 
   render() {
     return (
-      <Grommet>
-        <Box width="100vw" height="100vh">
-          <MainView 
-            fetchSuccess={this.state.fetchSuccess}
-            location={this.state.location} 
-          />
-        </Box>
-      </Grommet>
+        <Grommet>
+          <Box width="100vw" height="100vh">
+            <MainView 
+              fetchSuccess={this.state.fetchSuccess}
+              location={this.state.location} 
+            />
+          </Box>
+        </Grommet>
     );
   }
 }

@@ -11,6 +11,16 @@ import { MaskedInput } from 'grommet';
 
 ## Properties
 
+**icon**
+
+An optional icon to show. This could be used to provide an
+      indication of what kind of input is expected, like an email icon,
+      or what the input will be used for, like a search icon.
+
+```
+element
+```
+
 **id**
 
 The id attribute of the input.
@@ -47,7 +57,7 @@ function
 
 Describes the structure of the mask. If a regexp is provided, it should
       allow both the final full string element as well as partial strings
-      as the user types characters one by one. Defaults to `[]`.
+      as the user types characters one by one.
 
 ```
 [{
@@ -55,12 +65,24 @@ Describes the structure of the mask. If a regexp is provided, it should
     number
     [number],
   fixed: string,
-  options: [string],
+  options: [
+  string
+  number
+],
   regexp: 
     {
 
     }
 }]
+```
+
+**reverse**
+
+Whether an icon should be reversed so that the icon is at the
+      end of the input.
+
+```
+boolean
 ```
 
 **size**
@@ -82,6 +104,7 @@ What text to put in the input. The caller should ensure that it
 
 ```
 string
+number
 ```
   
 ## Intrinsic element
@@ -91,6 +114,26 @@ input
 ```
 ## Theme
   
+**global.hover.background**
+
+The background style when hovering. Expects `string | { color: string, opacity: string }`.
+
+Defaults to
+
+```
+{ color: 'active', opacity: 'medium' }
+```
+
+**global.hover.color**
+
+The text color when hovering. Expects `string | { dark: string, light: string }`.
+
+Defaults to
+
+```
+{ dark: 'white', light: 'black' }
+```
+
 **maskedInput.extend**
 
 Any additional style for MaskedInput. Expects `string | (props) => {}`.

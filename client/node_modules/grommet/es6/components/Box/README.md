@@ -15,7 +15,8 @@ import { Box } from 'grommet';
 
 **a11yTitle**
 
-Custom title to be used by screen readers.
+Custom label to be used by screen readers. When provided, an aria-label will
+   be added to the element.
 
 ```
 string
@@ -45,8 +46,8 @@ string
 **margin**
 
 The amount of margin around the component. An object can
-      be specified to distinguish horizontal margin, vertical margin, and
-      margin on a particular side. Defaults to `none`.
+    be specified to distinguish horizontal margin, vertical margin, and
+    margin on a particular side.
 
 ```
 none
@@ -58,6 +59,14 @@ large
 xlarge
 {
   bottom: 
+    xxsmall
+    xsmall
+    small
+    medium
+    large
+    xlarge
+    string,
+  end: 
     xxsmall
     xsmall
     small
@@ -82,6 +91,14 @@ xlarge
     xlarge
     string,
   right: 
+    xxsmall
+    xsmall
+    small
+    medium
+    large
+    xlarge
+    string,
+  start: 
     xxsmall
     xsmall
     small
@@ -210,9 +227,9 @@ zoomOut
 
 **background**
 
-Either a color identifier to use for the background
-        color. For example: 'neutral-1'. Or, a 'url()' for an image. Dark
-        is not needed if color is provided.
+Either a color 
+identifier to use for the background color. For example: 'neutral-1'. Or, a 
+'url()' for an image. Dark is not needed if color is provided.
 
 ```
 string
@@ -224,6 +241,7 @@ string
   image: string,
   position: string,
   opacity: 
+    string
     boolean
     number
     weak
@@ -266,7 +284,8 @@ string
 
 **border**
 
-Include a border.
+Include a border. 'between' will place a border in the gap between
+      child elements. You must have a 'gap' to use 'between'.
 
 ```
 boolean
@@ -274,9 +293,12 @@ top
 left
 bottom
 right
+start
+end
 horizontal
 vertical
 all
+between
 {
   color: 
     string
@@ -289,9 +311,12 @@ all
     left
     bottom
     right
+    start
+    end
     horizontal
     vertical
-    all,
+    all
+    between,
   size: 
     xsmall
     small
@@ -310,6 +335,42 @@ all
     outset
     hidden
 }
+[{
+  color: 
+    string
+    {
+      dark: string,
+      light: string
+    },
+  side: 
+    top
+    left
+    bottom
+    right
+    start
+    end
+    horizontal
+    vertical
+    all
+    between,
+  size: 
+    xsmall
+    small
+    medium
+    large
+    xlarge
+    string,
+  style: 
+    solid
+    dashed
+    dotted
+    double
+    groove
+    ridge
+    inset
+    outset
+    hidden
+}]
 ```
 
 **direction**
@@ -363,6 +424,15 @@ vertical
 boolean
 ```
 
+**focusIndicator**
+
+When interactive via 'onClick', whether it should receive a focus
+        outline. Defaults to `true`.
+
+```
+boolean
+```
+
 **gap**
 
 The amount of spacing between child elements. This
@@ -370,6 +440,7 @@ The amount of spacing between child elements. This
         will not wrap gracefully.
 
 ```
+none
 xxsmall
 xsmall
 small
@@ -392,6 +463,61 @@ large
 xlarge
 xxlarge
 string
+{
+  min: 
+    xxsmall
+    xsmall
+    small
+    medium
+    large
+    xlarge
+    xxlarge
+    string,
+  max: 
+    xxsmall
+    xsmall
+    small
+    medium
+    large
+    xlarge
+    xxlarge
+    string
+}
+```
+
+**hoverIndicator**
+
+When 'onClick' has been specified, the hover indicator to apply
+        when the user is mousing over the box.
+
+```
+boolean
+string
+background
+{
+  color: string,
+  dark: 
+    boolean
+    string,
+  image: string,
+  light: string,
+  position: string,
+  opacity: 
+    string
+    boolean
+    number
+    weak
+    medium
+    strong,
+  repeat: 
+    no-repeat
+    repeat
+    string,
+  size: 
+    cover
+    contain
+    string
+}
 ```
 
 **justify**
@@ -406,6 +532,15 @@ end
 evenly
 start
 stretch
+```
+
+**onClick**
+
+Click handler. Setting this property adds additional attributes to
+      the DOM for accessibility.
+
+```
+function
 ```
 
 **overflow**
@@ -435,8 +570,8 @@ string
 **pad**
 
 The amount of padding around the box contents. An
-        object can be specified to distinguish horizontal padding, vertical
-        padding, and padding on a particular side of the box Defaults to `none`.
+    object can be specified to distinguish horizontal padding, vertical
+    padding, and padding on a particular side of the box Defaults to `none`.
 
 ```
 none
@@ -448,6 +583,14 @@ large
 xlarge
 {
   bottom: 
+    xxsmall
+    xsmall
+    small
+    medium
+    large
+    xlarge
+    string,
+  end: 
     xxsmall
     xsmall
     small
@@ -472,6 +615,14 @@ xlarge
     xlarge
     string,
   right: 
+    xxsmall
+    xsmall
+    small
+    medium
+    large
+    xlarge
+    string,
+  start: 
     xxsmall
     xsmall
     small
@@ -573,6 +724,26 @@ large
 xlarge
 xxlarge
 string
+{
+  min: 
+    xxsmall
+    xsmall
+    small
+    medium
+    large
+    xlarge
+    xxlarge
+    string,
+  max: 
+    xxsmall
+    xsmall
+    small
+    medium
+    large
+    xlarge
+    xxlarge
+    string
+}
 ```
 
 **wrap**
@@ -659,6 +830,36 @@ Defaults to
 { dark: rgba(255, 255, 255, 0.33), light: rgba(0, 0, 0, 0.33), }
 ```
 
+**global.hover.background.color**
+
+The color of the default background when hovering Expects `string | { dark: string, light: string }`.
+
+Defaults to
+
+```
+active
+```
+
+**global.hover.background.opacity**
+
+The opacity of the default background when hovering Expects `string | { dark: string, light: string }`.
+
+Defaults to
+
+```
+medium
+```
+
+**global.hover.color**
+
+The color of the default background when hovering Expects `string | { dark: string, light: string }`.
+
+Defaults to
+
+```
+{ dark: "white", light: "black" }
+```
+
 **global.opacity.medium**
 
 The value used when background opacity is set to true. Expects `number`.
@@ -700,7 +901,8 @@ undefined
 
 **box.responsiveBreakpoint**
 
-The actual breakpoint to trigger changes in the border, direction, gap, margin, pad, and round. Expects `string`.
+The actual breakpoint to trigger changes in the border, 
+    direction, gap, margin, pad, and round. Expects `string`.
 
 Defaults to
 
@@ -732,7 +934,8 @@ Defaults to
 
 **global.breakpoints**
 
-The possible breakpoints that could affect border, direction, gap, margin, pad, and round. Expects `object`.
+The possible breakpoints that could affect border, direction, gap, margin, 
+    pad, and round. Expects `object`.
 
 Defaults to
 

@@ -3,8 +3,10 @@ import { Heading, Box, Anchor } from 'grommet';
 import { Previous } from 'grommet-icons';
 import { Store } from '../Store';
 import Landing from './Landing';
-import CustomView from './CustomView';
-import RandomView from './RandomView';
+
+import loadable from '@loadable/component';
+const CustomView = loadable(() => import('./CustomView'));
+const RandomView = loadable(() => import('./RandomView')); 
 
 const mainView = ({ location, fetchSuccess }) => {
   const [locationInput, setLocationInput] = useState(false);
