@@ -30,127 +30,65 @@ const customForm = ({ toggleUi, customView, location }) => {
   };
 
   return (
-    <div 
-    // height="100vh" 
-    // width="100%" 
-    // animation="fadeIn"
-    >
-        <div 
-          // direction="row" 
-          // height="15%" 
-          // align="center"
-        >
-          <div 
-            // width="20%"
+    <div className="customForm">
+      <div className="customForm__header">
+        <i 
+          className="fas fa-chevron-left" 
+          onClick={() => toggleUi('landing')}
+        />
+        <h3>Custom Search</h3>
+      </div>
+      <div className="customForm__form">
+        <form className="customForm__form__select">
+          <label>Sort by</label>
+          <select 
+            value={sortBy} 
+            onChange={({ option }) => setSortBy(option)}
           >
-            {/* <Anchor 
+            <option value="Best Match">Best Match</option>
+            <option value="Rating">Rating</option>
+            <option value="Random">Random</option>
+          </select>
+        </form>
+        <div className="customForm__form__txtInput">
+          <form>
+            <label>Search for:</label>
+            <input 
+              type="text"
               size="small"
-              color="dark-1"
-              icon={<Previous />} 
-              margin={{ top: '4px' }} 
-              onClick={() => toggleUi('landing')}
-            /> */}
-          </div>
-          <div 
-            // width="60%" 
-            // align="center" 
-            // justify="center"
-          >
-            <p 
-              // size="large" 
-              // weight="bold" 
-              // color="status-warning"
-              >
-              Custom Search
-            </p>
-          </div>
-        </div>
-        <div 
-          // height="69%" 
-          // width="260px"
-          // align="center"
-          // alignSelf="center"
-        >
-          <div 
-            // justify="center" 
-            // width="100%"
-          >
-            <form 
-              // label="Sort by"
-              >
-              {/* <Select
-                plain
-                size="medium"
-                value={sortBy}
-                alignSelf="center"
-                onChange={({ option }) => setSortBy(option)}
-                options={['Best Match', 'Rating', 'Random']}
-              /> */}
-            </form>
-          </div>
-          <div 
-            // justify="center" 
-            // width="100%" 
-            // margin={{top: '22px'}}
-            >
-              <form label="Search for:">
-                <input 
-                  type="text"
-                  size="small"
-                  value={currentTerm}
-                  placeholder="e.g. Pizza, Tacos, Bar" 
-                  onChange={(e) => setCurrentTerm(e.target.value)}
-                />
-              </form>
-            <button 
-              // alignSelf="center"
-              // color="status-warning"
-              onClick={(e) => addTerm(e)} 
-              // primary={searchTerms.length === 3 ? true : false}
-              disabled={searchTerms.length === 3 ? true : false}
-              label={ searchTerms.length === 3 ? "Click on terms to delete" : "Add"} 
+              value={currentTerm}
+              placeholder="e.g. Pizza, Tacos, Bar" 
+              onChange={(e) => setCurrentTerm(e.target.value)}
             />
-          </div> 
-          <div 
-            // width="100%"
-            // height="50%"
-            // align="center" 
-            // justify="evenly"
-            // pad={{ top: 'small', bottom: 'small' }}
+          </form>
+          <div
+            onClick={(e) => addTerm(e)} 
+            disabled={searchTerms.length === 3 ? true : false}
+            className={searchTerms.length === 3 ? "customForm__form__txtInput__addItemBtn customForm__form__txtInput__addItemBtn--delete" : "customForm__form__txtInput__addItemBtn"} 
           >
-            {searchTerms.map((el, index) => {
-              return (
-                <div 
-                  key={index} 
-                  // round="xlarge"
-                  // direction="row"
-                  // background="light-2" 
-                  onClick={() => removeTerm(index)} 
-                  // pad={{ top: 'xsmall', bottom: 'xsmall', left: 'small', right: 'small' }}
-                >
-                  <p 
-                    // textAlign="center" 
-                    // weight="bold" 
-                    // margin={{ 'right': 'small' }}
-                    >
-                    {el}
-                  </p>
-                  {/* <FormClose color="status-warning"/> */}
-                </div>
-              )
-            })}
-          </div>  
-        </div>
+            Add
+          </div>
+        </div> 
+        <div className="customForm__form__searchItems">
+          {searchTerms.map((el, index) => {
+            return (
+              <div 
+                key={index}
+                className="customForm__form__searchItems__item" 
+                onClick={() => removeTerm(index)} 
+              >
+                <p>{el}</p>
+                <i className="fas fa-times" />
+              </div>
+            )
+          })}
+        </div>  
+      </div>
       <div
-        // height="16%" 
-        // align="center" 
-        // justify="center"
-        // background="status-warning"
-        // onClick={(e) => submitSearchTerms(e)}
+        className="customForm__findBtn"
+        onClick={(e) => submitSearchTerms(e)}
       >
-        <h3>
-          FIND ME PLACES
-        </h3>
+        FIND ME PLACES
       </div>
     </div>
   );
