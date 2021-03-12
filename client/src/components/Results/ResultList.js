@@ -133,10 +133,9 @@ const resultList = ({ data, randomSorting, isCustom, toggleUi, customSearchTerms
   }
 
   return (
-    <div 
+    <div
+      className={isCustom ? "resultList resultList--custom" : "resultList"}
       // height={isCustom ? "75%" : "85%"} 
-      // align="center" 
-      // justify="evenly"
       >
       {displayItems.length > 1 && (
         <>

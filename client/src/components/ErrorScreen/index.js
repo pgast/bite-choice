@@ -4,22 +4,10 @@ import './style.css';
 
 const errorScreen = ({ error }) => {
   return (
-    <div 
-      // pad="large" 
-      // width="100%"
-      // height="100%" 
-      // align="center"
-      // justify="center" 
-      // background="status-error" 
-    >
-      {/* <Alert size="xlarge" /> */}
-      <h1>
-        Oops..
-      </h1>
-      <p 
-        // textAlign="center" 
-        // weight="bold"
-      >
+    <div className="errorScreen">
+      <i className="fas fa-exclamation-triangle"/>
+      <h1>Oops..</h1>
+      <p>
         {error === "Error" ?
         "There was an error fetching the information. This might be due to:"
         :

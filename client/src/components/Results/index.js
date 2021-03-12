@@ -15,9 +15,7 @@ const resultView = ({
 }) => {
 
   return (
-    <div 
-    // height="100vh"
-    >
+    <div className="resultView">
       <ResultHeader 
         toggleUi={toggleUi} 
         isCustom={isCustom} 
@@ -32,25 +30,10 @@ const resultView = ({
         randomSorting={randomSorting}
         customSearchTerms={customSearchData}
       />
-      <div 
-        // height="8%" 
-        // justify="center"
-        >
-          <div style={{
-              opacity: 0.2,
-              fontSize: 15,
-              fontWeight: 'bold',
-              textAlign: 'center',
-              alignItems: 'center',
-            }}
-          >
-            <a 
-              style={{ 'textDecoration': 'none' }} 
-              href="http://www.github.com/pgast" 
-            >
-              &lt;/&gt; pgast
-            </a>
-          </div>
+      <div className="resultView__watermark">
+        <a href="http://www.github.com/pgast">
+          &lt;/&gt; pgast
+        </a>
       </div>
     </div>
   );
