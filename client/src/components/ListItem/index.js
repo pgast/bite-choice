@@ -4,69 +4,29 @@ import './style.css';
 
 const ListItem = ({ item, removeItem }) => {
   return (
-    <div 
-      // pad="small"
-      // height="27%" 
-      // round="small" 
-      // width="260px"
-      // align="center"
-      // justify="around"
-      // background="accent-4"
-    >
+    <div className="listItem">
       <div>
-        <p 
-          // weight="bold"
-          // textAlign="center" 
-          // margin={{bottom: 'xsmall'}} 
-        >
+        <p>
           {item.name}
         </p>
-        <div 
-          // gap="medium" 
-          // width="100%"
-          // direction="row" 
-          // justify="center" 
-        >
-          <p>
-            { item.categories[0].hasOwnProperty('title') ? item.categories[0].title : "" }
-          </p>
-        </div>
+        <p>
+          { item.categories[0].hasOwnProperty('title') ? item.categories[0].title : "" }
+        </p>
       </div>
-      <div 
-        // gap="large" 
-        // width="100%"
-        // direction="row" 
-        // justify="center" 
-      >
-        <div 
-          // pad="small" 
-          // width="66px" 
-          // round="large" 
-          // background={{ 'color': 'dark-1', 'opacity': 'weak'}}
+      <div className="listItem__btnRow">
+        <a
+          className="listItem__btn"
+          href={item.url}
+          target="_blank"
+          rel="noopener noreferrer"
         >
-          {/* <Anchor 
-            primary 
-            label="Info" 
-            size="small" 
-            color="dark-1" 
-            target="_blank"
-            href={item.url}
-            alignSelf="center" 
-          /> */}
-        </div>
+          Info
+        </a>
         <div 
-          // pad="small" 
-          // width="66px" 
-          // round="large" 
-          // background={{ 'color': 'status-warning', 'opacity': 'strong' }}
+          className="listItem__btn listItem__btn--delete"
+          onClick={() => removeItem()}
         >
-          {/* <Anchor 
-            size="small" 
-            label="Delete" 
-            color="dark-1" 
-            alignSelf="center" 
-            onClick={() => removeItem()} 
-          /> */}
+          Delete
         </div>
       </div>
     </div>

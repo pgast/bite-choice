@@ -112,12 +112,28 @@
 
 /* Result List */
 .resultList {
-  border: 1px solid black;
   width: 100%;
   height: 100%;
   padding-top: 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .resultList--custom {
   padding-top: 9.8rem;
+}
+
+.resultList__fetching {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 6rem;
+  opacity: 0.1;
+}
+
+.resultList__fetching h1 {
+  font-size: 1.5rem;
+  margin-top: 2rem;
 }

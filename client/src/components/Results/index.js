@@ -13,7 +13,6 @@ const resultView = ({
   customSearchData, 
   toggleCustomForm,
 }) => {
-
   return (
     <div className="resultView">
       <ResultHeader 

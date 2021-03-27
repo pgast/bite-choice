@@ -133,10 +133,7 @@ const resultList = ({ data, randomSorting, isCustom, toggleUi, customSearchTerms
   }
 
   return (
-    <div
-      className={isCustom ? "resultList resultList--custom" : "resultList"}
-      // height={isCustom ? "75%" : "85%"} 
-      >
+    <div className={isCustom ? "resultList resultList--custom" : "resultList"}>
       {displayItems.length > 1 && (
         <>
           {displayItems.map((el, index) => {
@@ -145,17 +142,9 @@ const resultList = ({ data, randomSorting, isCustom, toggleUi, customSearchTerms
         </>
       )}
       {(displayItems.length < 1) && (
-        <div 
-          // width="100%" 
-          // height="100%" 
-          // align="center"
-          // justify="center" 
-          // background="status-warning" 
-        >
-          {/* <Cafeteria size="xlarge" color="light-1" /> */}
-          <h1 
-            color="light-1"
-            >
+        <div className="resultList__fetching">
+          <i className="fas fa-utensils" />
+          <h1>
             Fetching places...
           </h1>
         </div>
