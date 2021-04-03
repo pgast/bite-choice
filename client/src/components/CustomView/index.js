@@ -1,7 +1,7 @@
 import React from 'react';
 
-import ResultView from '../Results';
 import CustomForm from '../CustomForm';
+const ResultView = React.lazy(() => import('../Results'));
 
 const customView = ({ 
   data,

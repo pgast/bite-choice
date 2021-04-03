@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 
 import './style.css';
+import LandingHeaderInput from './LandingHeaderInput';
 import { Store } from '../../Store';
 
 const landingHeader = ({ location, fetchSuccess, locationInput }) => {
@@ -10,16 +11,7 @@ const landingHeader = ({ location, fetchSuccess, locationInput }) => {
   return (
     <div className="landingHeader" id={locationInput ? "landingHeader--big" : null}>
       {locationInput && (
-        <div className="landingHeader__banner--inputLocation"> 
-            <input
-              type="text"
-              placeholder="Type your new location" 
-              onChange={(e) => updateLocation(e.target.value)}
-              className="landingHeader__banner--inputLocation__textInput"
-              value={state.inputLocation.charAt(0).toUpperCase() + state.inputLocation.substring(1)}
-            />
-          <h3>and choose your search option</h3>
-        </div>
+        <LandingHeaderInput updateLocation={updateLocation} inputLocation={state.inputLocation} />
       )}
       {((fetchSuccess || fetchSuccess === '') && !locationInput) && (
         <div className="landingHeader__banner--city">

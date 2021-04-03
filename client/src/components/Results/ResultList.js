@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 
 import './style.css';
-import ErrorScreen from '../ErrorScreen';
-import ChoiceView from '../ChoiceView';
 import ListItem from '../ListItem';
+const ChoiceView = React.lazy(() => import('../ChoiceView'));
+const ErrorScreen = React.lazy(() => import('../ErrorScreen'));
 
 const resultList = ({ data, randomSorting, isCustom, toggleUi, customSearchTerms }) => {
   const [displayItems, setDisplayItems] = useState([{ 

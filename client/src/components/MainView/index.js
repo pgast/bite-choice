@@ -1,9 +1,10 @@
 import React, { useContext, useState } from 'react';
 
 import { Store } from '../../Store';
-import CustomView from '../CustomView';
-import RandomView from '../RandomView';
 import LandingView from '../LandingView';
+const CustomView = React.lazy(() => import('../CustomView'));
+const RandomView = React.lazy(() => import('../RandomView'));
+
 
 const mainView = ({ location, fetchSuccess }) => {
   const { state, dispatch } = useContext(Store);
@@ -38,23 +39,25 @@ const mainView = ({ location, fetchSuccess }) => {
           toggleLocationInputView={toggleLocationInputView}
         />
       )}
-      {state.ui === 'custom' && (
-        <CustomView 
-          data={state.data}
-          toggleUi={toggleUi}
-          customView={state.customView}
-          toggleCustomForm={toggleCustomForm}
-          location={locationInput ? state.inputLocation : location}
-        />
-      )} 
-      {state.ui === 'random' && (
-        <RandomView 
-          data={state.data}
-          locationInput={locationInput}
-          toggleUi={() => toggleUi('landing')} 
-          location={locationInput ? state.inputLocation : location}
-        />
-      )}
+      <React.Suspense fallback={<></>}>
+        {state.ui === 'custom' && (
+          <CustomView 
+              data={state.data}
+              toggleUi={toggleUi}
+              customView={state.customView}
+              toggleCustomForm={toggleCustomForm}
+              location={locationInput ? state.inputLocation : location}
+            />
+        )} 
+        {state.ui === 'random' && (
+          <RandomView
+            data={state.data}
+            locationInput={locationInput}
+            toggleUi={() => toggleUi('landing')} 
+            location={locationInput ? state.inputLocation : location}
+          />
+        )}
+      </React.Suspense>
     </div>
   );
 };
