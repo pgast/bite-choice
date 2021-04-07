@@ -28,15 +28,11 @@
 .resultHeader {
   height: 5rem;
   background: #f8f8f8;
-  position: fixed;
   width: 100%;
-  left: 0;
-  top: 0;
   display: flex;
   align-items: center;
   font-size: 1.3rem;
   padding-left: 1rem;
-  z-index: 99;
   -webkit-animation: fadeInTop 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
   animation: fadeInTop 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
 }
@@ -45,7 +41,7 @@
   flex-direction: column;
   padding-left: 0;
   justify-content: space-between;
-  height: 9.8rem;
+  height: 11rem;
 } 
 
 .resultHeader--custom i {
@@ -114,15 +110,10 @@
 .resultList {
   width: 100%;
   height: 100%;
-  padding-top: 5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-}
-
-.resultList--custom {
-  padding-top: 9.8rem;
 }
 
 .resultList__fetching {
