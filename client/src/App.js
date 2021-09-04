@@ -10,8 +10,8 @@ class App extends Component {
   }; 
 
   componentWillMount() {
-    Request.get({ "url": "http://ip-api.com/json/" }, (error, res, body) => {
-        if (error || JSON.parse(body).status === "fail") {
+    Request.get({ "url": "https://geolocation-db.com/json/" }, (error, res, body) => {
+        if (error) {
           this.setState({ fetchSuccess: false }); 
           return console.dir(error);    
         } 
