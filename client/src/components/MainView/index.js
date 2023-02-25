@@ -5,6 +5,10 @@ import LandingView from '../LandingView';
 const CustomView = React.lazy(() => import('../CustomView'));
 const RandomView = React.lazy(() => import('../RandomView'));
 
+function validBtn(eventA, eventB) {
+  if (eventA || eventB) return true
+  return false
+}
 
 const mainView = ({ location, fetchSuccess }) => {
   const { state, dispatch } = useContext(Store);
@@ -15,16 +19,12 @@ const mainView = ({ location, fetchSuccess }) => {
   const toggleUi = ui => dispatch ({ type: 'TOGGLE_UI', payload: ui });
   const toggleCustomForm = () => dispatch({ type: 'TOGGLE_CUSTOM_FORM' });
 
+  let eventA = locationInput && validUserLocation ? true : false;
+  let eventB = !locationInput && fetchSuccess ? true : false;
+
   const toggleLocationInputView = input => {
     clearLocation();
     setLocationInput(input);
-  }
-
-  const validBtn = () => {
-    let eventA = locationInput && validUserLocation ? true : false;
-    let eventB = !locationInput && fetchSuccess ? true : false;
-    if(eventA || eventB) return true;
-    return false;
   }
 
   return (
@@ -32,7 +32,7 @@ const mainView = ({ location, fetchSuccess }) => {
       {state.ui === 'landing' && (
         <LandingView 
           location={location} 
-          validBtn={validBtn}
+          validBtn={() => validBtn(eventA, eventB)}
           toggleUi={toggleUi}
           fetchSuccess={fetchSuccess} 
           locationInput={locationInput}

@@ -5,6 +5,26 @@ import ListItem from '../ListItem';
 const ChoiceView = React.lazy(() => import('../ChoiceView'));
 const ErrorScreen = React.lazy(() => import('../ErrorScreen'));
 
+function getIndeces(businesses) {
+  let indeces = [];
+  if (businesses.length <= 3) {
+    indeces.push(0, 2);
+  } else if (businesses.length !== 0) {
+    while (indeces.length < 3) {
+      let number = Math.floor(Math.random() * Math.floor(businesses.length));
+      if (!indeces.includes(number)) indeces.push(number);
+    };
+  }
+  return indeces;
+}
+
+function randomPicks(array) {
+  let results = getIndeces(array).map(el => {
+    return array[el];
+  })
+  return results;
+}
+
 const resultList = ({ data, randomSorting, isCustom, toggleUi, customSearchTerms }) => {
   const [displayItems, setDisplayItems] = useState([{ 
     name: 'Fetching', 
@@ -19,28 +39,6 @@ const resultList = ({ data, randomSorting, isCustom, toggleUi, customSearchTerms
       setStatesFromArray(data);
     }
   }, [data, setBusinesses]);
-
-  const getIndeces = (businesses) => {
-    let indeces = [];
-    if (businesses.length <= 3) {
-      indeces.push(0, 2);
-    } else if (businesses.length !== 0) {
-      while (indeces.length < 3) {
-        let number = Math.floor(Math.random() * Math.floor(businesses.length));
-        if (!indeces.includes(number)) {
-          indeces.push(number);
-        }
-      };
-    }
-    return indeces;
-  }
-
-  const randomPicks = (array) => {
-    let results = getIndeces(array).map(el => {
-      return array[el];
-    })
-    return results;
-  }
 
   const setStatesCustom = async (inputData) => {
     let data = await inputData;
