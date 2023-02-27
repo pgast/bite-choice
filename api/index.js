@@ -1,6 +1,7 @@
 const compression = require('compression');
 const express = require('express');
 const app = express();
+require('dotenv').config({path: '../.env'});
 const port = process.env.PORT || 8081;
 const request = require('request');
 const bodyParser = require('body-parser');
@@ -44,20 +45,20 @@ const generateUrl = (inputParams) => {
 };
 
 const getRestaurantData = (inputParams, res) => {
-    request.get({
-        "headers": 
-        {
-            "Authorization": "Bearer 06std1ZLKwAs-2O6bPns9EOD4PuJzku3Oup1FmQr-DIb3hXD7Q83BiC6ZibA0MfdhYzfhRktFyUEIinxnOQlptGGyYzoJgCbd-0--Pfpx-fvl7FV_5O-gFOrKB1JXHYx"
-        },
-        "url": generateUrl(inputParams)
-    }, (error, response, body) => 
+  request.get({
+    "headers": 
     {
-        if (error) { 
-            res.send({ businesses: "error" }) 
-        } else {
-            res.send(JSON.parse(body));
-        }
-    }); 
+      "Authorization": `Bearer ${process.env.YELP_API_KEY}`
+    },
+    "url": generateUrl(inputParams)
+  }, (error, response, body) => 
+  {
+    if (error) { 
+      res.send({ businesses: "error" }) 
+    } else {
+      res.send(JSON.parse(body));
+    }
+  }); 
 };
 
 app.get('/getRandom/:location', (req, res) => {
@@ -75,8 +76,8 @@ app.get('/search/:term?/:sort_by/:newLocation', (req, res) => {
 });
 
 app.get('/*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'build', 'index.html'));
-  });
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
 
 app.listen(port, () => console.log(`App listening in port ${port}`));
 
