@@ -7,6 +7,7 @@ module.exports = function override(config, env) {
     "path": false,
     "zlib": false,
     "http": require.resolve("stream-http"),
+    "url": require.resolve("url"),
     "https": false,
     "stream": false,
     "crypto": false,
