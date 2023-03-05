@@ -4,18 +4,21 @@
   "private": true,
   "dependencies": {
     "@loadable/component": "^5.12.0",
+    "customize-cra": "^1.0.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-scripts": "^5.0.1",
     "request": "^2.88.2",
     "stream": "^0.0.2",
     "stream-http": "^3.2.0",
-    "url": "^0.11.0"
+    "url": "^0.11.0",
+    "webpack": "^5.75.0"
   },
   "resolutions": {
     "react-error-overlay": "6.0.9"
   },
   "scripts": {
+    "preinstall": "npx npm-force-resolutions",
     "start": "react-app-rewired start",
     "build": "GENERATE_SOURCEMAP=false react-app-rewired build",
     "eject": "react-scripts eject"
