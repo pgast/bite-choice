@@ -1,5 +1,5 @@
-const webpack = require('webpack')
-const { override, addWebpackPlugin, addWebpackResolve } = require('customize-cra')
+const webpack = require('webpack');
+const { override, addWebpackPlugin, addWebpackResolve } = require('customize-cra');
 
 module.exports = override(
   addWebpackPlugin(
@@ -24,4 +24,4 @@ module.exports = override(
       "assert": false,
     }
   })
-)
+);
