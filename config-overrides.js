@@ -20,6 +20,7 @@ module.exports = override(
       "stream": false,
       "crypto": false,
       "util": false,
+      "buffer": false,
     }
   })
 )
