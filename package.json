@@ -5,6 +5,7 @@
   "dependencies": {
     "@loadable/component": "^5.12.0",
     "assert": "^2.0.0",
+    "browserify-zlib": "^0.2.0",
     "buffer": "^6.0.3",
     "crypto-browserify": "^3.12.0",
     "customize-cra": "^1.0.0",
@@ -20,8 +21,7 @@
     "tls": "^0.0.1",
     "url": "^0.11.0",
     "util": "^0.12.5",
-    "webpack": "^5.75.0",
-    "zlib": "^1.0.5"
+    "webpack": "^5.75.0"
   },
   "resolutions": {
     "react-error-overlay": "6.0.9"

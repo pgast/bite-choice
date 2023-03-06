@@ -13,7 +13,7 @@ module.exports = override(
       "tls": require.resolve("tls"),
       "net": require.resolve("net"),
       "path": require.resolve("path"),
-      "zlib": require.resolve("zlib"),
+      "zlib": require.resolve("browserify-zlib"),
       "http": require.resolve("stream-http"),
       "url": require.resolve("url"),
       "https": false,
