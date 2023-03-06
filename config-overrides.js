@@ -22,6 +22,7 @@ module.exports = override(
       "crypto": false,
       "buffer": false,
       "assert": false,
+      "util": require.resolve("util"),
     }
   })
 );
