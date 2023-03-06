@@ -4,24 +4,23 @@ const { override, addWebpackPlugin, addWebpackResolve } = require('customize-cra
 module.exports = override(
   addWebpackPlugin(
     new webpack.DefinePlugin({
-      // process: { env: {} },
       "process.env.YELP_API_KEY": JSON.stringify(process.env.YELP_API_KEY),
     })
   ),
   addWebpackResolve({
     fallback: {
-      "fs": false,
-      "tls": false,
-      "net": false,
-      "path": false,
-      "zlib": false,
+      "fs": require.resolve("fs"),
+      "tls": require.resolve("tls"),
+      "net": require.resolve("net"),
+      "path": require.resolve("path"),
+      "zlib": require.resolve("zlib"),
       "http": require.resolve("stream-http"),
       "url": require.resolve("url"),
-      "https": false,
-      "stream": false,
-      "crypto": false,
-      "buffer": false,
-      "assert": false,
+      "https": require.resolve("https"),
+      "stream": require.resolve("stream"),
+      "crypto": require.resolve("crypto"),
+      "buffer": require.resolve("buffer"),
+      "assert": require.resolve("assert"),
       "util": require.resolve("util"),
     }
   })
