@@ -9,7 +9,7 @@ module.exports = override(
   ),
   addWebpackResolve({
     fallback: {
-      "fs": require.resolve("fs"),
+      "fs": false,
       "tls": require.resolve("tls"),
       "net": require.resolve("net"),
       "path": require.resolve("path"),
