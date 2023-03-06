@@ -9,7 +9,6 @@
     "crypto": "^1.0.1",
     "customize-cra": "^1.0.0",
     "fs": "^0.0.1-security",
-    "https": "^1.0.0",
     "net": "^1.0.2",
     "path": "^0.12.7",
     "react": "^16.8.6",

@@ -16,7 +16,7 @@ module.exports = override(
       "zlib": require.resolve("zlib"),
       "http": require.resolve("stream-http"),
       "url": require.resolve("url"),
-      "https": require.resolve("https"),
+      "https": false,
       "stream": require.resolve("stream"),
       "crypto": require.resolve("crypto"),
       "buffer": require.resolve("buffer"),
