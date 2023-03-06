@@ -4,7 +4,8 @@ const { override, addWebpackPlugin, addWebpackResolve } = require('customize-cra
 module.exports = override(
   addWebpackPlugin(
     new webpack.DefinePlugin({
-      "process.env": JSON.stringify(process.env),
+      // "process.env": JSON.stringify(process.env),
+      process: "process/browser",
     })
   ),
   addWebpackResolve({
