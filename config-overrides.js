@@ -2,13 +2,16 @@ const webpack = require('webpack');
 const { override, addWebpackPlugin, addWebpackResolve } = require('customize-cra');
 
 module.exports = override(
-  addWebpackPlugin(
-    new webpack.DefinePlugin({
-      // "process.env": JSON.stringify(process.env),
-      process: "process/browser",
-    })
-  ),
+  // addWebpackPlugin(
+  //   new webpack.DefinePlugin({
+  //     // "process.env": JSON.stringify(process.env),
+  //     process: "process/browser",
+  //   })
+  // ),
   addWebpackResolve({
+    alias: { 
+      process: "process/browser"
+    },
     fallback: {
       "fs": false,
       "tls": require.resolve("tls"),
