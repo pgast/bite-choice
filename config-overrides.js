@@ -24,7 +24,7 @@ module.exports = override(
       "https": false,
       "stream": require.resolve("stream"),
       "crypto": require.resolve("crypto-browserify"),
-      "buffer": require.resolve("buffer"),
+      "buffer": require.resolve("buffer/"),
       "assert": require.resolve("assert"),
       "util": require.resolve("util"),
     }
