@@ -4,7 +4,6 @@ const { override, addWebpackPlugin, addWebpackResolve } = require('customize-cra
 module.exports = override(
   addWebpackPlugin(
     new webpack.DefinePlugin({
-      // 'process.env.YELP_API_KEY': JSON.stringify(process.env.YELP_API_KEY),
       process: {env: {}},
       Buffer: ["buffer", "Buffer"],
     })
