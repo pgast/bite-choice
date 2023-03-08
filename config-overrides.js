@@ -5,6 +5,8 @@ module.exports = override(
   addWebpackPlugin(
     new webpack.DefinePlugin({
       process: {env: {}},
+    }),
+    new webpack.DefinePlugin({
       Buffer: ["buffer", "Buffer"],
     })
   ),
