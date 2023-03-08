@@ -6,8 +6,6 @@ module.exports = override(
     new webpack.DefinePlugin({
       // 'process.env.YELP_API_KEY': JSON.stringify(process.env.YELP_API_KEY),
       process: {env: {}},
-    }),
-    new webpack.DefinePlugin({
       Buffer: ["buffer", "Buffer"],
     })
   ),
