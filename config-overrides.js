@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const { override, addWebpackPlugin, addWebpackResolve } = require('customize-cra');
 
+// Falla el buffer aqui
 // module.exports = override(
 //   addWebpackPlugin(
 //     new webpack.DefinePlugin({
@@ -40,6 +41,7 @@ module.exports = function override(config, env) {
     http: require.resolve("stream-http"),
     "https": false,
     "zlib": require.resolve("browserify-zlib"),
+    "crypto": require.resolve("crypto-browserify"),
   }
   config.resolve.extensions = [...config.resolve.extensions, ".ts", ".js"]
   config.plugins = [
