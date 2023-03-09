@@ -33,11 +33,11 @@ const { override, addWebpackPlugin, addWebpackResolve } = require('customize-cra
 // );
 
 module.exports = function override(config, env) {
-  //do stuff with the webpack config...
   config.resolve.fallback = {
     ...config.resolve.fallback,
     stream: require.resolve("stream-browserify"),
     buffer: require.resolve("buffer"),
+    http: require.resolve("stream-http"),
   }
   config.resolve.extensions = [...config.resolve.extensions, ".ts", ".js"]
   config.plugins = [
@@ -49,8 +49,6 @@ module.exports = function override(config, env) {
       process: "process/browser",
     }),
   ]
-  console.log(config.resolve)
-  console.log(config.plugins)
 
   return config
 }
