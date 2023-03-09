@@ -16,17 +16,18 @@ const { override, addWebpackPlugin, addWebpackResolve } = require('customize-cra
 //       process: "process/browser"
 //     },
 //     fallback: {
-//       "fs": false,
+  //       "stream": require.resolve("stream"),
+  //       "buffer": require.resolve("buffer/"),
+  //       "http": require.resolve("stream-http"),
+  //       "https": false,
+  //       "zlib": require.resolve("browserify-zlib"),
+  //       "crypto": require.resolve("crypto-browserify"),
+  //       "fs": false,
+
 //       "tls": require.resolve("tls"),
 //       "net": require.resolve("net"),
 //       "path": require.resolve("path"),
-//       "zlib": require.resolve("browserify-zlib"),
-//       "http": require.resolve("stream-http"),
 //       "url": require.resolve("url"),
-//       "https": false,
-//       "stream": require.resolve("stream"),
-//       "crypto": require.resolve("crypto-browserify"),
-//       "buffer": require.resolve("buffer/"),
 //       "assert": require.resolve("assert"),
 //       "util": require.resolve("util"),
 //     }
@@ -39,9 +40,16 @@ module.exports = function override(config, env) {
     stream: require.resolve("stream-browserify"),
     buffer: require.resolve("buffer"),
     http: require.resolve("stream-http"),
-    "https": false,
-    "zlib": require.resolve("browserify-zlib"),
-    "crypto": require.resolve("crypto-browserify"),
+    https: false,
+    zlib: require.resolve("browserify-zlib"),
+    crypto: require.resolve("crypto-browserify"),
+    fs: false,
+    "tls": require.resolve("tls"),
+    "net": require.resolve("net"),
+    "path": require.resolve("path"),
+    "url": require.resolve("url"),
+    "assert": require.resolve("assert"),
+    "util": require.resolve("util"),
   }
   config.resolve.extensions = [...config.resolve.extensions, ".ts", ".js"]
   config.plugins = [
