@@ -4,6 +4,7 @@ import React from 'react';
 import { StoreProvider } from './Store';
 import App from './App';
 import './index.css';
-window.Buffer = window.Buffer || require("buffer").Buffer;
+import {Buffer} from 'buffer';
+Buffer.from('anything','base64');
 
 ReactDOM.render(<StoreProvider><App /></StoreProvider>, document.getElementById('root'));
