@@ -5,15 +5,18 @@ require('dotenv').config({path: '../.env'});
 const port = 8081;
 const request = require('request');
 const bodyParser = require('body-parser');
+
 const https = require('https');
 const http = require('http');
 
 var path = require("path");
 
+app.set('port', port);
+
 app.use(compression());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(express.static(path.join(__dirname, 'build')));
+// app.use(express.static(path.join(__dirname, 'build')));
 
 const generateUrl = (inputParams) => {
     let url = `https://api.yelp.com/v3/businesses/search?`;
