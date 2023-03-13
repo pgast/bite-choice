@@ -5,6 +5,7 @@ require('dotenv').config({path: '../.env'});
 const port = 8081;
 const request = require('request');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 
 // const https = require('https');
 // const http = require('http');
@@ -13,6 +14,9 @@ var path = require("path");
 
 app.set('port', port);
 
+app.use(cors({
+  origin: '*'
+}));
 app.use(compression());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
