@@ -6,8 +6,8 @@ const port = 8081;
 const request = require('request');
 const bodyParser = require('body-parser');
 
-const https = require('https');
-const http = require('http');
+// const https = require('https');
+// const http = require('http');
 
 var path = require("path");
 
