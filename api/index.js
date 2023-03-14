@@ -65,7 +65,8 @@ const getRestaurantData = (inputParams, res) => {
     if (error) { 
       res.send({ businesses: "error" }) 
     } else {
-      res.send(JSON.parse(body));
+      // res.send(JSON.parse(body));
+      return JSON.parse(body)
     }
   }); 
 };
@@ -75,7 +76,8 @@ app.get('/getRandom/:location', (req, res) => {
     let parameters = {};
     parameters.sort_by = sortBy[Math.floor(Math.random() * Math.floor(4))];
     parameters.location = req.params.location;
-    getRestaurantData(parameters, res);
+    res.send(getRestaurantData(parameters, res));
+    // getRestaurantData(parameters, res);
 });
 
 app.get('/search/:term?/:sort_by/:newLocation', (req, res) => {
