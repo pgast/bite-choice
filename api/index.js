@@ -12,7 +12,6 @@ var path = require("path");
 
 app.set('port', port);
 
-
 app.use(cors({ origin: '*' }));
 app.use(compression());
 app.use(bodyParser.urlencoded({ extended: true }));
