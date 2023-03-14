@@ -7,8 +7,6 @@ const request = require('request');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
-// const https = require('https');
-// const http = require('http');
 
 var path = require("path");
 
@@ -75,7 +73,22 @@ app.get('/getRandom/:location', (req, res) => {
     let parameters = {};
     parameters.sort_by = sortBy[Math.floor(Math.random() * Math.floor(4))];
     parameters.location = req.params.location;
-    getRestaurantData(parameters, res);
+    // getRestaurantData(parameters, res);
+
+    request.get({
+      "headers": 
+      {
+        "Authorization": `Bearer ${process.env.YELP_API_KEY}`
+      },
+      "url": generateUrl(parameters)
+    }, (error, response, body) => 
+    {
+      if (error) { 
+        res.send({ businesses: "error" }) 
+      } else {
+        res.send(JSON.parse(body));
+      }
+    }); 
 });
 
 app.get('/search/:term?/:sort_by/:newLocation', (req, res) => {
