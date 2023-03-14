@@ -15,10 +15,11 @@ var path = require("path");
 app.set('port', port);
 
 
-app.use(cors());
+app.use(cors({ origin: '*' }));
 app.use(compression());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(express.static('public'))
 // app.use(express.static(path.join(__dirname, 'build')));
 
 const generateUrl = (inputParams) => {
@@ -89,3 +90,5 @@ app.get('/*', (req, res) => {
 
 app.listen(port, () => console.log(`App listening in port ${port}`));
 
+
+module.exports = app;
